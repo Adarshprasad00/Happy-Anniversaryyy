@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Year Anniversary Surprise</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.w3schools.com/w3images/flowers.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .container {
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            display: inline-block;
+            margin: 50px auto;
+            position: relative;
+            z-index: 1;
+            max-width: 80%;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .heart {
+            color: red;
+            font-size: 2em;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #e91e63;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #c2185b;
+        }
+
+        .message-container {
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .message {
+            display: none;
+            padding: 20px;
+            color: black;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 1.2em;
+            position: relative;
+            animation: reveal 1s ease-in-out;
+            width: calc(100% - 40px);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .message:nth-of-type(1) { background-color: #ffeb3b; }
+        .message:nth-of-type(2) { background-color: #ff5722; }
+        .message:nth-of-type(3) { background-color: #4caf50; }
+        .message:nth-of-type(4) { background-color: #2196f3; }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .countdown {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #ffeb3b;
+            animation: fadeIn 5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy 5th Anniversary Love!</h1>
+        <p>You light up my life in more ways than I can count. Here's to many more years of love and happiness together! ❤️</p>
+        <div class="heart">❤️</div>
+        <p class="countdown" id="countdown"></p>
+        <div class="signature">Forever yours, Vinu..</div>
+        <button class="button" onclick="showSecretMessages()">Click for Surprises</button>
+        <div class="message-container">
+            <div class="message" id="message1">Surprise! Here’s a special message just for you: I love you more than words can say.</div>
+            <div class="message" id="message2">Don't know how I got so lucky to get a girl like you, but I'm thankful every single day..</div>
+            <div class="message" id="message3">Every day with you is a gift, and I cherish every moment we spend together.</div>
+            <div class="message" id="message4">Thank you for being my everything. I look forward to many more years of happiness with you.</div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const endDate = new Date('2024-08-22T00:00:00'); // Set your anniversary date here
+            const now = new Date();
+            const timeDiff = endDate - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById('countdown').textContent = "It's our special day!";
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s until our anniversary!`;
+        }
+
+        function showSecretMessages() {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.style.display = 'block';
+                }, index * 2000); // Show each message with a delay
+            });
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initialize countdown
+    </script>
+</body>
+</html>
